@@ -85,13 +85,13 @@ export const Header = async () => {
 
   const currencies = data.currencies.edges
     ? data.currencies.edges
-        // only show transactional currencies for now until cart prices can be rendered in display currencies
-        .filter(({ node }) => node.isTransactional)
-        .map(({ node }) => ({
-          id: node.code,
-          label: node.code,
-          isDefault: node.isDefault,
-        }))
+      // only show transactional currencies for now until cart prices can be rendered in display currencies
+      .filter(({ node }) => node.isTransactional)
+      .map(({ node }) => ({
+        id: node.code,
+        label: node.code,
+        isDefault: node.isDefault,
+      }))
     : [];
 
   const streamableLinks = Streamable.from(async () => {
@@ -107,7 +107,7 @@ export const Header = async () => {
    To show a full list of categories, modify the `slice` method to remove the limit.
    Will require modification of navigation menu styles to accommodate the additional categories.
    */
-    const slicedTree = categoryTree.slice(0, 6);
+    const slicedTree = categoryTree.slice(0, 8);
 
     return slicedTree.map(({ name, path, children }) => ({
       label: name,
@@ -154,33 +154,42 @@ export const Header = async () => {
   });
 
   return (
-    <HeaderSection
-      navigation={{
-        accountHref: '/login',
-        accountLabel: t('Icons.account'),
-        cartHref: '/cart',
-        cartLabel: t('Icons.cart'),
-        giftCertificatesLabel: t('Icons.giftCertificates'),
-        giftCertificatesHref: '/gift-certificates',
-        giftCertificatesEnabled: streamableGiftCertificatesEnabled,
-        searchHref: '/search',
-        searchParamName: 'term',
-        searchAction: search,
-        searchInputPlaceholder: t('Search.inputPlaceholder'),
-        searchSubmitLabel: t('Search.submitLabel'),
-        links: streamableLinks,
-        logo,
-        mobileMenuTriggerLabel: t('toggleNavigation'),
-        openSearchPopupLabel: t('Icons.search'),
-        logoLabel: t('home'),
-        cartCount: streamableCartCount,
-        activeLocaleId: locale,
-        locales,
-        currencies,
-        activeCurrencyId: streamableActiveCurrencyId,
-        currencyAction: switchCurrency,
-        switchCurrencyLabel: t('SwitchCurrency.label'),
-      }}
-    />
+    <div className="text-[#ff5500] [&_a]:text-[#275c2b] 
+    [&_svg]:text-[#275c2b] [&_svg]:stroke-[2px] [&_button]:text-[#275c2b]
+    hover:[&_ul_a]:bg-[#275c2b] hover:[&_ul_a]:text-[#ffffff]
+    
+    max-sm:[&_a[aria-label='Home']]:absolute 
+    max-sm:[&_a[aria-label='Home']]:left-1/2 
+    max-sm:[&_a[aria-label='Home']]:-translate-x-1/2
+    ">
+      <HeaderSection
+        navigation={{
+          accountHref: '/login',
+          accountLabel: t('Icons.account'),
+          cartHref: '/cart',
+          cartLabel: t('Icons.cart'),
+          giftCertificatesLabel: t('Icons.giftCertificates'),
+          giftCertificatesHref: '/gift-certificates',
+          giftCertificatesEnabled: streamableGiftCertificatesEnabled,
+          searchHref: '/search',
+          searchParamName: 'term',
+          searchAction: search,
+          searchInputPlaceholder: t('Search.inputPlaceholder'),
+          searchSubmitLabel: t('Search.submitLabel'),
+          links: streamableLinks,
+          logo,
+          mobileMenuTriggerLabel: t('toggleNavigation'),
+          openSearchPopupLabel: t('Icons.search'),
+          logoLabel: t('home'),
+          cartCount: streamableCartCount,
+          activeLocaleId: locale,
+          locales,
+          currencies,
+          activeCurrencyId: streamableActiveCurrencyId,
+          currencyAction: switchCurrency,
+          switchCurrencyLabel: t('SwitchCurrency.label'),
+        }}
+      />
+    </div>
   );
 };

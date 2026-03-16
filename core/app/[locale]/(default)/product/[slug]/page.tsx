@@ -56,13 +56,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: metaKeywords ? metaKeywords.split(',') : null,
     openGraph: url
       ? {
-          images: [
-            {
-              url,
-              alt,
-            },
-          ],
-        }
+        images: [
+          {
+            url,
+            alt,
+          },
+        ],
+      }
       : null,
   };
 }
@@ -440,34 +440,34 @@ export default async function Product({ params, searchParams }: Props) {
     return [
       ...(specifications.length
         ? [
-            {
-              title: t('ProductDetails.Accordions.specifications'),
-              content: (
-                <div className="prose @container">
-                  <dl className="flex flex-col gap-4">
-                    {specifications.map((field, index) => (
-                      <div className="grid grid-cols-1 gap-2 @lg:grid-cols-2" key={index}>
-                        <dt>
-                          <strong>{field.name}</strong>
-                        </dt>
-                        <dd>{field.value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-              ),
-            },
-          ]
+          {
+            title: t('ProductDetails.Accordions.specifications'),
+            content: (
+              <div className="prose @container">
+                <dl className="flex flex-col gap-4">
+                  {specifications.map((field, index) => (
+                    <div className="grid grid-cols-1 gap-2 @lg:grid-cols-2" key={index}>
+                      <dt>
+                        <strong>{field.name}</strong>
+                      </dt>
+                      <dd>{field.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ),
+          },
+        ]
         : []),
       ...(product.warranty
         ? [
-            {
-              title: t('ProductDetails.Accordions.warranty'),
-              content: (
-                <div className="prose" dangerouslySetInnerHTML={{ __html: product.warranty }} />
-              ),
-            },
-          ]
+          {
+            title: t('ProductDetails.Accordions.warranty'),
+            content: (
+              <div className="prose" dangerouslySetInnerHTML={{ __html: product.warranty }} />
+            ),
+          },
+        ]
         : []),
     ];
   });
@@ -581,7 +581,11 @@ export default async function Product({ params, searchParams }: Props) {
         previousLabel={t('RelatedProducts.previousProducts')}
         products={streameableRelatedProducts}
         scrollbarLabel={t('RelatedProducts.scrollbar')}
-        title={t('RelatedProducts.title')}
+        title={
+          <span style={{ color: 'var(--product-detail-primary-text)' }}>
+            More from the Nursery
+          </span>
+        }
       />
 
       {showRating && (

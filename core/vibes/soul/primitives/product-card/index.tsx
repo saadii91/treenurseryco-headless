@@ -139,7 +139,7 @@ export function ProductCard({
         </div>
 
         <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @2xl:flex-row">
-          <div className="flex-1 text-sm @[16rem]:text-base">
+          <div className="flex-1 text-sm @[16rem]:text-base text-center w-full">
             <span
               className={clsx(
                 'line-clamp-2 font-semibold',
@@ -179,6 +179,19 @@ export function ProductCard({
             >
               {inventoryMessage}
             </span>
+
+          </div>
+          <div className="relative z-10 mt-4 w-full">
+            <Link
+              href={href}
+              className={clsx(
+                'block w-full rounded-full py-3 text-center text-base font-bold text-white transition-all duration-300',
+                'bg-[#34531f] hover:bg-[#2a4319] shadow-[0px_4px_10px_rgba(0,0,0,0.4)] hover:shadow-[0px_6px_15px_rgba(0,0,0,0.5)]',
+                'tracking-wide leading-none'
+              )}
+            >
+              Buy Now
+            </Link>
           </div>
         </div>
         {href !== '#' && (

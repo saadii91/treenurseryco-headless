@@ -204,15 +204,15 @@ export default async function Category(props: Props) {
       tree == null || tree.children.length === 0
         ? []
         : [
-            {
-              type: 'link-group' as const,
-              label: t('Category.subCategories'),
-              links: tree.children.map((child) => ({
-                label: child.name,
-                href: child.path,
-              })),
-            },
-          ];
+          {
+            type: 'link-group' as const,
+            label: t('Category.subCategories'),
+            links: tree.children.map((child) => ({
+              label: child.name,
+              href: child.path,
+            })),
+          },
+        ];
 
     return [...subCategoriesFilters, ...filters];
   });

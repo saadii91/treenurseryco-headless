@@ -67,6 +67,16 @@ export default async (): Promise<NextConfig> => {
     experimental: {
       optimizePackageImports: ['@icons-pack/react-simple-icons'],
     },
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'cdn11.bigcommerce.com',
+          port: '',
+          pathname: '/**',
+        },
+      ],
+    },
     typescript: {
       ignoreBuildErrors: !!process.env.CI,
     },

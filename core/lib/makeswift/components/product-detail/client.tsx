@@ -75,9 +75,9 @@ const ProductDetailImpl = ({
     ): Awaited<ProductDetail['accordions']> =>
       productAccordions != null
         ? mergeSections(productAccordions, accordions, (left, right) => ({
-            ...left,
-            content: right.content,
-          }))
+          ...left,
+          content: right.content,
+        }))
         : undefined,
     [accordions],
   );

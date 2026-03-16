@@ -8,7 +8,7 @@ runtime.registerComponent(SectionLayout, {
   label: 'Layouts / Section',
   icon: 'layout',
   props: {
-    className: Style({ properties: [...Style.Default, Style.Border] }),
+    className: Style({ properties: [...Style.Default, Style.Border, Style.Padding] }),
     children: Slot(),
     containerSize: Select({
       label: 'Container size',

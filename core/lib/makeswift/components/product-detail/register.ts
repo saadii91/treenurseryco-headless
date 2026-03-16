@@ -1,4 +1,4 @@
-import { Group, List, Select, Slot, TextArea, TextInput } from '@makeswift/runtime/controls';
+import { Color, Group, List, Select, Slot, TextArea, TextInput } from '@makeswift/runtime/controls';
 
 import { runtime } from '~/lib/makeswift/runtime';
 
@@ -29,6 +29,10 @@ runtime.registerComponent(MakeswiftProductDetail, {
   props: {
     summaryText: TextArea({
       label: 'Summary',
+    }),
+    titleColor: Color({
+      label: 'Title Color',
+      defaultValue: '#000000', // Or your Nursery Green hex
     }),
     description,
     accordions: List({

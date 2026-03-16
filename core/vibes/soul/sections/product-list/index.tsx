@@ -50,7 +50,7 @@ export function ProductList({
   className,
   colorScheme = 'light',
   aspectRatio = '5:6',
-  showCompare: streamableShowCompare = true,
+  showCompare: streamableShowCompare = false,
   compareHref,
   compareProducts: streamableCompareProducts = [],
   compareLabel: streamableCompareLabel = 'Compare',
@@ -99,7 +99,7 @@ export function ProductList({
             maxItems={maxItems}
           >
             <div className={clsx('w-full @container', className)}>
-              <div className="mx-auto grid grid-cols-1 gap-x-4 gap-y-6 @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5">
+              <div className="mx-auto grid grid-cols-1 gap-x-4 gap-y-6 @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-4">
                 {products.map((product) => (
                   <ProductCard
                     aspectRatio={aspectRatio}
@@ -108,9 +108,11 @@ export function ProductList({
                     compareParamName={compareParamName}
                     imageSizes="(min-width: 80rem) 20vw, (min-width: 64rem) 25vw, (min-width: 42rem) 33vw, (min-width: 24rem) 50vw, 100vw"
                     key={product.id}
-                    product={product}
-                    showCompare={showCompare}
                     showRating={showRating}
+                    product={{
+                      ...product,
+                      action: product.action ?? 'add-to-cart'
+                    }}
                   />
                 ))}
               </div>

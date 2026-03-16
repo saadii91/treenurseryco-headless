@@ -81,9 +81,9 @@ export const Footer = async () => {
 
   const contactInformation = data.settings?.contact
     ? {
-        address: data.settings.contact.address,
-        phone: data.settings.contact.phone,
-      }
+      address: data.settings.contact.address,
+      phone: data.settings.contact.phone,
+    }
     : undefined;
 
   const socialMediaLinks = data.settings?.socialMediaLinks
@@ -99,37 +99,7 @@ export const Footer = async () => {
     const sectionsData = await getFooterSections(customerAccessToken, currencyCode);
 
     return [
-      {
-        title: t('categories'),
-        links: sectionsData.categoryTree.map((category) => ({
-          label: category.name,
-          href: category.path,
-        })),
-      },
-      {
-        title: t('brands'),
-        links: removeEdgesAndNodes(sectionsData.brands).map((brand) => ({
-          label: brand.name,
-          href: brand.path,
-        })),
-      },
-      {
-        title: t('navigate'),
-        links: [
-          ...(sectionsData.settings?.giftCertificates?.isEnabled
-            ? [
-                {
-                  label: t('giftCertificates'),
-                  href: '/gift-certificates',
-                },
-              ]
-            : []),
-          ...removeEdgesAndNodes(sectionsData.content.pages).map((page) => ({
-            label: page.name,
-            href: page.__typename === 'ExternalLinkPage' ? page.link : page.path,
-          })),
-        ],
-      },
+
     ];
   });
 
