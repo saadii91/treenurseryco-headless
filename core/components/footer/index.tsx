@@ -1,4 +1,3 @@
-import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 import {
   SiFacebook,
   SiInstagram,
@@ -96,7 +95,6 @@ export const Footer = async () => {
   const streamableSections = Streamable.from(async () => {
     const customerAccessToken = await getSessionCustomerAccessToken();
     const currencyCode = await getPreferredCurrencyCode();
-    const sectionsData = await getFooterSections(customerAccessToken, currencyCode);
 
     return [
 

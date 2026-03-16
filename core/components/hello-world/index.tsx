@@ -128,7 +128,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import { User, Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
-import Image from 'next/image';
+import { Image } from '~/components/image';
 import { fetchdata } from "./_server/dataload";
 
 interface BlogPost {
